@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery Toggle</title>
+
+  <style>
+    .highlight {
+      background: yellow;
+    }
+  </style>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+
+  <h1>Imperative (jQuery) Toggle</h1>
+
+  <button id="btn">Toggle Highlight</button>
+
+  <p id="text">
+    Это абзац. Нажми кнопку, чтобы добавить или убрать подсветку.
+  </p>
+
+  <script>
+    $(document).ready(function () {
+      $("#btn").click(function () {
+        $("#text").toggleClass("highlight");
+      });
+    });
+  </script>
+
+</body>
+</html>
+
