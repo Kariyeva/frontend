@@ -1,9 +1,57 @@
-# Lab 04 - Task 2 (Refactoring Articles)
+# Lab 04 — Task 2 (Reusable Components & Refactoring)
 
-I started from one manager component logic and refactored UI into reusable components:
-- AddArticle: inputs + add button
-- ArticleList: renders list
-- ArticleItem: shows one article and manages its own open/close state with useState
+## Описание
+В этой лабораторной работе был выполнен рефакторинг компонента управления статьями. Большой компонент был разделён на несколько переиспользуемых компонентов.
 
-ArticleManager stores the articles array and passes handlers as props.
+## Использованные технологии
+- React
+- TypeScript
+- useState
+- Props
 
+## Структура компонентов
+
+Приложение состоит из следующих компонентов:
+
+### ArticleManager
+Главный компонент, который:
+- хранит список статей
+- управляет состоянием
+- передаёт данные и обработчики в дочерние компоненты
+
+### AddArticle
+Компонент для добавления новой статьи.
+
+Содержит:
+- поле Title
+- поле Summary
+- кнопку Add
+
+Через props получает:
+- title
+- summary
+- onChangeTitle
+- onChangeSummary
+- onClickAdd
+
+### ArticleList
+Отвечает за отображение списка статей.
+
+Получает через props:
+- articles
+- onClickRemove
+
+Отображает список компонентов ArticleItem.
+
+### ArticleItem
+Компонент отдельной статьи.
+
+Функциональность:
+- отображает название статьи
+- показывает / скрывает summary
+- позволяет удалить статью
+
+Каждый ArticleItem управляет своим состоянием отображения (isOpened) через useState.
+
+## Вывод
+В результате рефакторинга приложение было разделено на небольшие переиспользуемые компоненты. Это улучшает читаемость кода, упрощает поддержку и повторное использование компонентов.
