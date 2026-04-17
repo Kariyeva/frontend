@@ -11,7 +11,9 @@ describe("TodoList Component", () => {
     });
 
     test("renders with initial todos", () => {
-      const initialTodos = [{ id: 1, text: "Test todo", completed: false }];
+      const initialTodos = [
+        { id: 1, text: "Test todo", completed: false }
+      ];
       render(<TodoList initialTodos={initialTodos} />);
       expect(screen.getByText("Test todo")).toBeInTheDocument();
       expect(screen.getByText("1 todos (0 completed)")).toBeInTheDocument();
@@ -69,7 +71,9 @@ describe("TodoList Component", () => {
 
   describe("Deleting todos", () => {
     test("deletes a todo", async () => {
-      const initialTodos = [{ id: 1, text: "Delete me", completed: false }];
+      const initialTodos = [
+        { id: 1, text: "Delete me", completed: false }
+      ];
       render(<TodoList initialTodos={initialTodos} />);
 
       const deleteButton = screen.getByTestId("delete-button");

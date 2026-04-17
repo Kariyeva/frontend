@@ -18,11 +18,7 @@ export function TodoList({ initialTodos = [] }: TodoListProps) {
     if (newTodo.trim()) {
       setTodos([
         ...todos,
-        {
-          id: Date.now(),
-          text: newTodo.trim(),
-          completed: false,
-        },
+        { id: Date.now(), text: newTodo.trim(), completed: false }
       ]);
       setNewTodo("");
     }
@@ -30,14 +26,14 @@ export function TodoList({ initialTodos = [] }: TodoListProps) {
 
   const toggleTodo = (id: number) => {
     setTodos(
-      todos.map((todo) =>
+      todos.map(todo =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
       )
     );
   };
 
   const deleteTodo = (id: number) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    setTodos(todos.filter(todo => todo.id !== id));
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -65,7 +61,7 @@ export function TodoList({ initialTodos = [] }: TodoListProps) {
       </div>
 
       <ul data-testid="todo-list">
-        {todos.map((todo) => (
+        {todos.map(todo => (
           <li
             key={todo.id}
             data-testid="todo-item"
@@ -89,7 +85,7 @@ export function TodoList({ initialTodos = [] }: TodoListProps) {
       </ul>
 
       <div data-testid="todo-count">
-        {todos.length} todos ({todos.filter((t) => t.completed).length} completed)
+        {todos.length} todos ({todos.filter(t => t.completed).length} completed)
       </div>
     </div>
   );

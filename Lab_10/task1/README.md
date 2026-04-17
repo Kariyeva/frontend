@@ -1,56 +1,73 @@
-# Lab 10 – Testing React Application (Jest + React Testing Library)
+# React + TypeScript + Vite
 
-## 📌 Description
-This task demonstrates testing a React application using Jest and React Testing Library.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-A Todo List application was implemented and fully covered with unit tests.
+Currently, two official plugins are available:
 
----
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## 🚀 Features
-- Add new todo items
-- Add via button and Enter key
-- Prevent adding empty todos
-- Toggle todo completion status
-- Delete todos
-- Display total and completed count
+## React Compiler
 
----
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## 🧪 Testing
-The application is tested using:
-- Jest
-- React Testing Library
-- user-event
+## Expanding the ESLint configuration
 
-### Covered test cases:
-- Rendering (empty and with initial data)
-- Adding todos
-- Enter key handling
-- Validation (empty input)
-- Toggling completion
-- Deleting items
-- Counter updates
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
----
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-## 🛠️ Technologies
-- React
-- TypeScript
-- Vite
-- Jest
-- React Testing Library
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
----
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
 
-## ▶️ Run project
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```bash
-npm install
-npm run dev
-▶️ Run tests
-npm test
-📊 Result
-All tests passed successfully
-Application behavior is fully verified
-Component logic is stable and predictable
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
