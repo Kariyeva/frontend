@@ -37,6 +37,7 @@ npm run build
 	•	Настроен CI pipeline
 	•	Исправлены ошибки сборки (terser)
 	•	Оптимизирован проект
-    ## 📸 CI Result
+
+ ## CI Result
 
 ![CI Success](./ci.png)
